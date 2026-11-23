@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      padding: 30px 15px;
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label.field-label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #444;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    .inline-options label {
+      margin-right: 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 5px;
+    }
+
+    .profile-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      object-fit: cover;
+      background-color: #e9ecef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .profile-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .file-btn {
+      background-color: #e2e8f0;
+      border: 1px solid #cbd5e1;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .file-btn:hover {
+      background-color: #cbd5e1;
+    }
+
+    #fileName {
+      font-size: 13px;
+      color: #555;
+      margin-left: 6px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button[type="submit"],
+    button[type="reset"] {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #1d4ed8;
+    }
+
+    button[type="reset"] {
+      background-color: #6b7280;
+      color: white;
+    }
+
+    button[type="reset"]:hover {
+      background-color: #4b5563;
+    }
+
+    .saved-output {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #ecfdf5;
+      border: 1px solid #10b981;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #065f46;
+      display: none;
+    }
+
+    .saved-output h3 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .saved-output p {
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Registration Form</h2>
+
+    <form id="registrationForm">
+      <div class="form-group">
+        <label class="field-label" for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required />
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required />
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required />
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="mobile">Mobile:</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="09XXXXXXXXX" required />
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Gender:</label>
+        <div class="inline-options">
+          <label><input type="radio" name="gender" value="Male" required /> Male</label>
+          <label><input type="radio" name="gender" value="Female" /> Female</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="dob">DOB:</label>
+        <input type="date" id="dob" name="dob" required />
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="course">Course:</label>
+        <select id="course" name="course" required>
+          <option value="">-- Select Course --</option>
+          <option value="BSIT">BSIT</option>
+          <option value="BSIS">BSIS</option>
+          <option value="BSTM">BSTM</option>
+          <option value="BSDRM">BSDRM</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Nationality:</label>
+        <div class="inline-options">
+          <label><input type="checkbox" name="nationality" value="Philippines" /> Philippines</label>
+          <label><input type="checkbox" name="nationality" value="Others" /> Others</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Profile:</label>
+        <div class="profile-section">
+          <!-- Default Profile SVG Icon -->
+          <div class="profile-icon" id="profilePreview">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="#6b7280">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          </div>
+
+          <div>
+            <!-- Hidden real file input restricted to JPG -->
+            <input type="file" id="profileFile" accept=".jpg, .jpeg, image/jpeg" hidden />
+            <button type="button" class="file-btn" onclick="document.getElementById('profileFile').click()">
+              Choose File
+            </button>
+            <span id="fileName">No file chosen</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+
+    <!-- Displays saved registration data -->
+    <div class="saved-output" id="savedOutput"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("registrationForm");
+    const fileInput = document.getElementById("profileFile");
+    const fileNameDisplay = document.getElementById("fileName");
+    const profilePreview = document.getElementById("profilePreview");
+    const savedOutput = document.getElementById("savedOutput");
+
+    const defaultIconHTML = `
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="#6b7280">
+        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+      </svg>
+    `;
+
+    // Handle JPG file selection & preview
+    fileInput.addEventListener("change", function () {
+      const file = this.files[0];
+
+      if (file) {
+        // Validate JPG format
+        if (file.type !== "image/jpeg" && !file.name.toLowerCase().endsWith(".jpg") && !file.name.toLowerCase().endsWith(".jpeg")) {
+          alert("Please select a valid JPG file only.");
+          this.value = "";
+          fileNameDisplay.textContent = "No file chosen";
+          profilePreview.innerHTML = defaultIconHTML;
+          return;
+        }
+
+        fileNameDisplay.textContent = file.name;
+
+        // Preview chosen JPG inside the profile icon
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profilePreview.innerHTML = `<img src="${e.target.result}" alt="Profile Picture" />`;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        fileNameDisplay.textContent = "No file chosen";
+        profilePreview.innerHTML = defaultIconHTML;
+      }
+    });
+
+    // Handle Submit button (validates passwords & saves to localStorage)
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      // Collect checked nationalities
+      const selectedNationalities = Array.from(
+        document.querySelectorAll('input[name="nationality"]:checked')
+      ).map((cb) => cb.value);
+
+      if (selectedNationalities.length === 0) {
+        alert("Please select at least one Nationality.");
+        return;
+      }
+
+      const registrationData = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        username: document.getElementById("username").value,
+        email: document.getElementById("email").value,
+        mobile: document.getElementById("mobile").value,
+        gender: document.querySelector('input[name="gender"]:checked').value,
+        dob: document.getElementById("dob").value,
+        course: document.getElementById("course").value,
+        nationality: selectedNationalities.join(", "),
+        profileFile: fileInput.files[0] ? fileInput.files[0].name : "No file chosen"
+      };
+
+      // Save data in browser localStorage
+      localStorage.setItem("savedRegistration", JSON.stringify(registrationData));
+
+      // Display saved confirmation on screen
+      savedOutput.style.display = "block";
+      savedOutput.innerHTML = `
+        <h3>Registration Saved!</h3>
+        <p><strong>Full Name:</strong> ${registrationData.firstName} ${registrationData.lastName}</p>
+        <p><strong>Username:</strong> ${registrationData.username}</p>
+        <p><strong>Email:</strong> ${registrationData.email}</p>
+        <p><strong>Mobile:</strong> ${registrationData.mobile}</p>
+        <p><strong>Gender:</strong> ${registrationData.gender}</p>
+        <p><strong>DOB:</strong> ${registrationData.dob}</p>
+        <p><strong>Course:</strong> ${registrationData.course}</p>
+        <p><strong>Nationality:</strong> ${registrationData.nationality}</p>
+        <p><strong>Profile File:</strong> ${registrationData.profileFile}</p>
+      `;
+    });
+
+    // Handle Reset button (clears all fields, file name, profile preview, and saved message)
+    form.addEventListener("reset", function () {
+      fileNameDisplay.textContent = "No file chosen";
+      profilePreview.innerHTML = defaultIconHTML;
+      savedOutput.style.display = "none";
+      savedOutput.innerHTML = "";
+    });
+  </script>
+
+</body>
+</html>
